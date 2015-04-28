@@ -1,5 +1,7 @@
 require "riotjs-rails/version"
 require "riotjs-rails/template"
+require "riotjs-rails/view_helper"
+require "riotjs-rails/railtie"
 
 module Riot
   module Rails
