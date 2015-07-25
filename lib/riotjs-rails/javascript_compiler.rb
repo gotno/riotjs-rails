@@ -1,4 +1,5 @@
 require "action_view"
+require "../../assets/commonjs"
 
 module Riot
   module Rails
@@ -13,7 +14,9 @@ module Riot
       )
 
       ENV['RIOT'] = File.expand_path('../../assets/javascripts/riot.js', __FILE__)
-      COMPILER_PATH = File.expand_path('../../support/riot_compiler.js', __FILE__)
+      # COMPILER_PATH = File.expand_path('../../support/riot_compiler.js', __FILE__)
+      commonjs = CommonJS::Environment.new(path: '../../support')
+      COMPILER_PATH = commonjs.require('server/index.js')
 
       def compile(source_code)
         source_code = escape_javascript(source_code)
